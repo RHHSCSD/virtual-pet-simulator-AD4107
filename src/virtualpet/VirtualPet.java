@@ -40,10 +40,10 @@ public class VirtualPet {
                 int petNum = lol.nextInt();
                     switch(petNum){
                         case 1:
-                            System.out.println("You got a dog");
+                            System.out.println("You got a cat");
                             break;
                         case 2:
-                            System.out.println("You got a cat");
+                            System.out.println("You got a dog");
                             break;
                         case 3:
                             System.out.println("You got a bird");
