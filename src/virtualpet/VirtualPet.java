@@ -25,11 +25,11 @@ public class VirtualPet {
     */
     public static void main(String[] args) {
         Scanner lol = new Scanner (System.in);
-        System.out.println("    /\\_____/\\\n" +
-"   /  o   o  \\     Start (1)\n" +
-"  ( ==  ^  == )    Introductions (2)\n" +
-"   )         (     Exit (3)\n" +
-"  (           )\n" +
+        System.out.println("    /\\_____/\\      MAIN MENU\n" +
+"   /  o   o  \\\n" +
+"  ( ==  ^  == )    Start (1)\n" +
+"   )         (     Introductions (2)\n" +
+"  (           )    Exit (3)\n" +
 " ( (  )   (  ) )\n" +
 "(__(__)___(__)__)\n" +
 "");
@@ -40,13 +40,13 @@ public class VirtualPet {
                 int petNum = lol.nextInt();
                     switch(petNum){
                         case 1:
-                            System.out.println("You got a cat");
+                            System.out.println("You chose the cat");
                             break;
                         case 2:
-                            System.out.println("You got a dog");
+                            System.out.println("You chose the dog");
                             break;
                         case 3:
-                            System.out.println("You got a bird");
+                            System.out.println("You chose the bird");
                             break;
                     }
                 break;
