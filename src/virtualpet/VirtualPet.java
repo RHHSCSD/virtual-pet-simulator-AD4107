@@ -33,9 +33,9 @@ public class VirtualPet {
         Random sui = new Random();
         System.out.println("    /\\_____/\\      MAIN MENU\n" +
 "   /  o   o  \\\n" +
-"  ( ==  ^  == )    Start (1)\n" +
-"   )         (     Introductions (2)\n" +
-"  (           )    Exit (3)\n" +
+"  ( ==  ^  == )    1) Play/Interact\n" +
+"   )         (     2) Instructions\n" +
+"  (           )    3) Exit\n" +
 " ( (  )   (  ) )\n" +
 "(__(__)___(__)__)\n" +
 "");
@@ -45,16 +45,18 @@ public class VirtualPet {
             
             //Login System
             case 1:
+                //ask for user
                 System.out.println("What is your user: ");
                 String user = lol.next();
                 
                 final String realUser = "snoopy";
                 final String realPass = "toto";
+                final int tries = 3;
                 
                 if (user.equals(realUser)){
                    System.out.println("What is your password: ");
                    String password = lol.next();
-                   
+
                    if (password.equals(realPass)){
                        //Select Pet
                        System.out.println("You can select a pet: Cat (1)   Dog (2)   Bird (3)");
@@ -106,6 +108,31 @@ public class VirtualPet {
                     }
                     
                     //Pet stats
+                    int points = 20;
+                    int health = (int)(sui.nextInt(20) + 1);
+                    int food = (int)(sui.nextInt(20-health) + 1);
+                    int energy = 20-health-food;
+                    System.out.println("Your pet has " + health + " health, " + food + " food, and " + energy + " energy.");
+                    
+                    //Earning money
+                    System.out.println("orengo");
+                    //Guessing game
+                    int randomNumber = sui.nextInt(100)+1;
+                    int numOfTries = 4;
+                    for (int i = numOfTries; i>0; i--){
+                        int guessNumber = lol.nextInt();
+                        System.out.println("You have " + i + " tries left.");
+                        if (randomNumber < guessNumber){
+                            System.out.println("Number is too high");
+                        }
+                        else if (randomNumber > guessNumber){
+                            System.out.println("Number is too small");
+                        }
+                        else if (randomNumber == guessNumber){
+                            System.out.println("You got the right number");
+                            break;
+                        }
+                    }
                     
                     
                 break;
