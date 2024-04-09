@@ -4,6 +4,7 @@
  */
 package virtualpet;
 import java.util.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author michael.roy-diclemen
@@ -26,6 +27,7 @@ public class VirtualPet {
  ( (  )   (  ) )
 (__(__)___(__)__)
     */
+    //public class InputDialogBox()
     public static void main(String[] args) {
         
 //Main Menu Screen        
@@ -33,7 +35,7 @@ public class VirtualPet {
         Random sui = new Random();
         System.out.println("    /\\_____/\\      MAIN MENU\n" +
 "   /  o   o  \\\n" +
-"  ( ==  ^  == )    1) Play/Interact\n" +
+"  ( ==  ^  == )    1) Start\n" +
 "   )         (     2) Instructions\n" +
 "  (           )    3) Exit\n" +
 " ( (  )   (  ) )\n" +
@@ -47,14 +49,47 @@ public class VirtualPet {
             case 1:
                 //ask for user
                 System.out.println("What is your user: ");
-                String user = lol.next();
                 
                 final String realUser = "snoopy";
                 final String realPass = "toto";
-                final int tries = 3;
                 
-                if (user.equals(realUser)){
-                   System.out.println("What is your password: ");
+                for (int userTries = 3; userTries>0; userTries--){
+                    String user = lol.next();
+                    if (user.equals(realUser)){
+                        System.out.println("What is your password: ");
+                        for (int i = 3; i>0; i--){
+                    String pass = lol.next();
+                    if (pass.equals(realPass)){
+                        System.out.println("Re-enter your password: ");
+                        break;
+                    }
+                    else{
+                        System.out.println("Wrong password. You have " + (i-1) + " tries left.");
+                        if (i-1==0){
+                        System.exit(0);
+                        break;
+                        }
+                        else{
+                        continue;
+                        }
+                    }
+                }break;
+                    }
+                    else{
+                        System.out.println("Wrong user. You have " + (userTries-1) + " tries left.");
+                        if (userTries-1 == 0){
+                            System.exit(0);
+                            break;
+                        }
+                        else{
+                        continue;
+                        }
+                    }
+                }
+                
+                
+               // if (user.equals(realUser)){
+                   //System.out.println("What is your password: ");
                    String password = lol.next();
 
                    if (password.equals(realPass)){
@@ -114,32 +149,72 @@ public class VirtualPet {
                     int energy = 20-health-food;
                     System.out.println("Your pet has " + health + " health, " + food + " food, and " + energy + " energy.");
                     
+//---------------------------------------------------------------------------------------------------------------------------//
+
                     //Earning money
-                    System.out.println("orengo");
-                    //Guessing game
+                    System.out.println("    /\\_____/\\      MAIN MENU\n" +
+"   /  o   o  \\\n" +
+"  ( ==  ^  == )    1) Play/Interact\n" +
+"   )         (     2) Instructions\n" +
+"  (           )    3) Exit\n" +
+" ( (  )   (  ) )\n" +
+"(__(__)___(__)__)\n" +
+"");
+                    int gold = 0;
+                    int menuNum = lol.nextInt();
+                    System.out.println("Games: ");
+                    System.out.println("1) Number Guessing Game");
+                    System.out.println("2) Matching Game");
+                    switch (menuNum){
+                        case 1:
+                            int gameChoice = lol.nextInt();
+                    if (gameChoice == 1){
+                        //Guessing game
+                    System.out.println("Guess a number between 1 and 100");
                     int randomNumber = sui.nextInt(100)+1;
-                    int numOfTries = 4;
-                    for (int i = numOfTries; i>0; i--){
-                        int guessNumber = lol.nextInt();
-                        System.out.println("You have " + i + " tries left.");
-                        if (randomNumber < guessNumber){
-                            System.out.println("Number is too high");
-                        }
-                        else if (randomNumber > guessNumber){
-                            System.out.println("Number is too small");
-                        }
-                        else if (randomNumber == guessNumber){
-                            System.out.println("You got the right number");
-                            break;
+                    int numOfTries = 5;
+                        for (int i = numOfTries; i>0; i--){
+                            int guessNumber = lol.nextInt();
+                            
+                            if (randomNumber < guessNumber){
+                                System.out.println("Number is too high");
+                                System.out.println("You have " + (i-1) + " tries left.");
+                            }
+                            else if (randomNumber > guessNumber){
+                                System.out.println("Number is too small");
+                                System.out.println("You have " + (i-1) + " tries left.");
+                            }
+                            else if (randomNumber == guessNumber){
+                                System.out.println("You got the right number");
+                                gold = gold+50;
+                                break;
+                            }
+                    }
+                        System.out.println("You earned " + gold + " gold!");
+                    }
+                    else if (gameChoice == 2){
+                        //Matching Game
+                        String the10Letters = "aabbccddeeff";
+                        
+                        for (int i = 0; i<10; i++){
+                            
                         }
                     }
+                    return;
+                        case 2:
+                            System.out.println("Instructions");
+                        case 3:
+                    }
+                    
+                    
+                    
                     
                     
                 break;
                    }
-                }
+                //}
                 else{
-                    System.out.println("Wrong user");
+                    System.out.println("Invalid input");
                     System.exit(0);
                 }
                 
