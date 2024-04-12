@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 public class VirtualPet {
 
     
+
     final String vowels = "aeiou";
     
     /**
@@ -29,25 +30,46 @@ public class VirtualPet {
     */
     //public class InputDialogBox()
     public static void main(String[] args) {
-        
-//Main Menu Screen        
         Scanner lol = new Scanner (System.in);
-        Random sui = new Random();
-        System.out.println("    /\\_____/\\      MAIN MENU\n" +
-"   /  o   o  \\\n" +
-"  ( ==  ^  == )    1) Start\n" +
-"   )         (     2) Instructions\n" +
-"  (           )    3) Exit\n" +
-" ( (  )   (  ) )\n" +
-"(__(__)___(__)__)\n" +
-"");
+    Random sui = new Random();
+//Main Menu Screen        
+                System.out.println("    /\\_____/\\    MAIN MENU\n" +
+                                   "   /  o   o  \\\n" +
+                                   "  ( ==  ^  == )    1) Start\n" +
+                                   "   )         (     2) Instructions\n" +
+                                   "  (           )    3) Exit\n" +
+                                   " ( (  )   (  ) )\n" +
+                                   "(__(__)___(__)__)\n" +
+                                   "");
        
         int startScreenNum = lol.nextInt();
         switch(startScreenNum){
             
             //Login System
             case 1:
-                //ask for user
+                startGame();
+                break;
+            case 2:
+                JOptionPane.showMessageDialog(null, "Instructions: ");
+                break;
+            case 3:
+                System.exit(0);
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Invalid input");
+                System.exit(0);
+                break;
+        }
+        
+    }
+    
+    //------------------------------------------------------------------------//
+    
+    //log in
+    public static void startGame(){
+        Scanner lol = new Scanner (System.in);
+        Random sui = new Random();
+        //ask for user
                 System.out.println("What is your user: ");
                 
                 final String realUser = "snoopy";
@@ -86,18 +108,23 @@ public class VirtualPet {
                         }
                     }
                 }
-                
-                
-               // if (user.equals(realUser)){
-                   //System.out.println("What is your password: ");
                    String password = lol.next();
 
                    if (password.equals(realPass)){
-                       //Select Pet
-                       System.out.println("You can select a pet: Cat (1)   Dog (2)   Bird (3)");
+                       pets();
+                       petStats();
+                       earnMoney();
+                   }
+    }
+    
+    //name Pet
+    public static void pets(){
+        Scanner lol = new Scanner (System.in);
+        Random sui = new Random();
+        int petNum = Integer.parseInt(JOptionPane.showInputDialog("You can select a pet: Cat (1)   Dog (2)   Bird (3)"));
                        
                 // Choosing names for pet
-                int petNum = lol.nextInt();
+                //int petNum = lol.nextInt();
                     switch(petNum){
                         case 1:
                             System.out.println("You chose the cat! Do you want to type (1) in the name or random generate (2)?");
@@ -141,17 +168,26 @@ public class VirtualPet {
                         System.out.println("Invalid input");
                         System.exit(0);
                     }
-                    
-                    //Pet stats
+    }
+    
+    //pet stats
+    public static void petStats(){
+        Random sui = new Random();
+        //Pet stats
                     int points = 20;
                     int health = (int)(sui.nextInt(20) + 1);
                     int food = (int)(sui.nextInt(20-health) + 1);
                     int energy = 20-health-food;
                     System.out.println("Your pet has " + health + " health, " + food + " food, and " + energy + " energy.");
-                    
-//---------------------------------------------------------------------------------------------------------------------------//
-
-                    //Earning money
+    }
+    
+    
+    
+    //Earning money
+    public static void earnMoney(){
+        Scanner lol = new Scanner (System.in);
+        Random sui = new Random();
+        //Earning money
                     System.out.println("    /\\_____/\\      MAIN MENU\n" +
 "   /  o   o  \\\n" +
 "  ( ==  ^  == )    1) Play/Interact\n" +
@@ -162,11 +198,13 @@ public class VirtualPet {
 "");
                     int gold = 0;
                     int menuNum = lol.nextInt();
-                    System.out.println("Games: ");
-                    System.out.println("1) Number Guessing Game");
-                    System.out.println("2) Matching Game");
+                    
                     switch (menuNum){
                         case 1:
+                            
+                            System.out.println("Games: ");
+                            System.out.println("1) Number Guessing Game");
+                            System.out.println("2) Matching Game");
                             int gameChoice = lol.nextInt();
                     if (gameChoice == 1){
                         //Guessing game
@@ -196,40 +234,41 @@ public class VirtualPet {
                         //Matching Game
                         String the10Letters = "aabbccddeeff";
                         
+                        
                         for (int i = 0; i<10; i++){
                             
                         }
                     }
                     return;
                         case 2:
-                            System.out.println("Instructions");
+                            JOptionPane.showMessageDialog(null, "Instructions");
+                            break;
                         case 3:
+                            System.exit(0);
+                            break;
                     }
-                    
-                    
-                    
-                    
-                    
-                break;
-                   }
-                //}
-                else{
-                    System.out.println("Invalid input");
-                    System.exit(0);
-                }
-                
-            case 2:
-                System.out.println("Instructions: ");
-                break;
-            case 3:
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Invalid input");
-                System.exit(0);
-                break;
-        }
-        
+    }
+    
+    //currency
+    
+    
+    //play with pet
+    public static int playWithPet (int playAmount){
+        int cost = 10;
+        int playCost = cost*playAmount;
+        return playCost;
+    }
+    //Feeding pet
+    public static int feedPet (int feedAmount){
+        int cost = 15;
+        int feedCost = cost*feedAmount;
+        return feedCost;
+    }
+    //Groom pet
+    public static int groomPet (int groomPet){
+        int cost = 15;
+        int groomCost = cost*groomPet;
+        return groomCost;
     }
     
 }
